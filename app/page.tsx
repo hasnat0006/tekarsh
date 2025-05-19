@@ -1,103 +1,174 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
+import {
+  ChevronRight,
+  Zap,
+  Layers,
+  Shield,
+  RefreshCw,
+} from "lucide-react";
+import { Spotlight } from "@/components/ui/spotlight";
+import { AnimatedTestimonialsDemo } from "@/components/resources/testimonial-info";
+import FAQAccordion from "@/components/ui/faqAnsReveal";
+import { FlipWords } from "@/components/ui/flip-words";
+import { Services } from "@/components/resources/services";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const words = [
+    "faster",
+    "better",
+    "together",
+    "smarter",
+    "safer",
+    "stronger",
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Spotlight />
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="container mx-auto p-12 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6 p-8">
+              <h1 className="text-4xl md:text-5xl font-bold">
+                Building{" "}
+                <span className="text-[var(--word)]/90">
+                  Quality
+                  <br /> Software,
+                </span>{" "}
+                <FlipWords words={words} />
+              </h1>
+              <p className="text-[var(--muted-foreground)] max-w-md">
+                Scalable tech solutions with built-in quality and speed. Tekarsh
+                specializes in delivering agile software, robust QA, and
+                dedicated support services for global businesses across
+                industries.
+              </p>
+              <Link
+                href="/services"
+                className="inline-flex items-center rounded-md bg-green-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700"
+              >
+                Explore Our Services <ChevronRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+            <div className="flex justify-end">
+              {/* <div className="absolute -z-10 rounded-full bg-green-50 w-[500px] h-[500px] -right-20 -top-20"></div> */}
+              <Image
+                src="/landing-hero-back.svg"
+                alt="Developers working"
+                width={500}
+                height={300}
+                className="rounded-lg object-cover absolute -right-0 top-20"
+              />
+              <Image
+                src="/landing-hero.svg"
+                alt="Developers working"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover z-1"
+              />
+            </div>
+          </div>
+        </section>
+        <Services />
+
+        {/* Why Tekarsh Section */}
+        <section className="container mx-auto py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2">
+              Why <span className="text-green-600">Tekarsh</span>?
+            </h2>
+            <p className="text-gray-600">
+              Delivering Excellence Through Innovation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-12">
+            <div className="flex justify-center h-96 items-center relative">
+              <Image
+                src="/why-tek.svg"
+                alt="Why Tekarsh"
+                width={300}
+                height={300}
+                className="rounded-full object-cover"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pr-8 ">
+              <div className="space-y-3">
+                <div className="p-2 bg-green-50 rounded-full inline-block">
+                  <Layers className="h-5 w-5 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-lg">Seamless Integration</h3>
+                <p className="text-gray-600 text-sm">
+                  We don&apos;t just deliver — we embed ourselves as part of
+                  your team
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="p-2 bg-green-50 rounded-full inline-block">
+                  <Zap className="h-5 w-5 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-lg">Rapid Innovation</h3>
+                <p className="text-gray-600 text-sm">
+                  Agile teams structured for quick iterations and faster
+                  delivery
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="p-2 bg-green-50 rounded-full inline-block">
+                  <RefreshCw className="h-5 w-5 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-lg">Maximum Value</h3>
+                <p className="text-gray-600 text-sm">
+                  Lean operational model focused on efficiency
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <div className="p-2 bg-green-50 rounded-full inline-block">
+                  <Shield className="h-5 w-5 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-lg">Quality-First Mindset</h3>
+                <p className="text-gray-600 text-sm">
+                  Built-in quality assurance from project inception
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-16">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              What Our Clients Say
+            </h2>
+            <AnimatedTestimonialsDemo />
+          </div>
+        </section>
+        {/* FAQ Section */}
+        <section className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="max-w-3xl mx-auto px-4 py-12">
+              <FAQAccordion />
+            </div>
+            <div className="flex justify-center items-center">
+              <Image
+                src="/faq.svg"
+                alt="FAQ Illustration"
+                width={450}
+                height={450}
+                className="max-w-full h-auto"
+              />
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

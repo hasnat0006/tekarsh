@@ -1,8 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #151515;
+  --green: #31a754;
+  --button-text: #f3f4f6;
+  --word: #3a3939;
+  --green-gradient: linear-gradient(90deg, hsla(138, 90%, 80%, 1) 0%, hsla(138, 41%, 43%, 1) 100%);
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --border: #e5e7eb;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+}
+
+.dark {
+  --background: #151515;
+  --foreground: #f3f4f6;
+  --green: #419A5B;
+  --button-text: #f3f4f6;
+  --word: #d3d3d3;
+  --card: #1f1f1f;
+  --card-foreground: #17191c;
+  --border: #2e2e2e;
+  --muted: #262626;
+  --muted-foreground: #9ca3af;
 }
 
 @theme inline {
@@ -10,17 +33,23 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -45%) scale(1);
+  }
 }
