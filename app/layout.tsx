@@ -33,7 +33,7 @@ export default function RootLayout({
           storageKey="theme"
         >
           <div
-            className={`${poppins.className} ${inter.className} bg-background text-foreground antialiased`}
+            className={`${poppins.className} ${inter.className} $ bg-background text-foreground antialiased`}
           >
             <NavbarDemo />
             {children}

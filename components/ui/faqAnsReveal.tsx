@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { faqItems } from "@/components/resources/faq";
+// import { faqItems } from "@/components/resources/faq";
 
-export default function FAQAccordion() {
+export default function FAQAccordion(
+  { faqItems }: { faqItems: { question: string; answer: string }[] }
+) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleQuestion = (index: number) => {

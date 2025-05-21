@@ -9,9 +9,9 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
-  NavDropDownItem,
   NavThemeChanger,
 } from "@/components/ui/resizable-navbar";
+import Link from "next/link";
 import { useState } from "react";
 // import ThemeChanger from "./ui/theme-changer";
 
@@ -23,17 +23,16 @@ export function NavbarDemo() {
     },
     {
       name: "Services",
-      link: "/services",
+      link: "/#services",
     },
     {
       name: "About",
-      link: "/about",
+      link: "/#about",
     },
     {
       name: "Contact",
       link: "/contact",
     },
-    
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,7 +45,9 @@ export function NavbarDemo() {
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
             <NavThemeChanger />
-            <NavbarButton variant="primary">Career</NavbarButton>
+            <Link href="/career">
+              <NavbarButton variant="primary">Career</NavbarButton>
+            </Link>
           </div>
         </NavBody>
 
@@ -64,14 +65,14 @@ export function NavbarDemo() {
             onClose={() => setIsMobileMenuOpen(false)}
           >
             {navItems.map((item, idx) => (
-              <a
+              <Link
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="relative text-neutral-600 dark:text-neutral-300"
               >
                 <span className="block">{item.name}</span>
-              </a>
+              </Link>
             ))}
             <div className="flex w-full flex-col gap-4">
               <NavThemeChanger />
@@ -80,7 +81,7 @@ export function NavbarDemo() {
                 variant="primary"
                 className="w-full"
               >
-                Login
+                Career
               </NavbarButton>
             </div>
           </MobileNavMenu>

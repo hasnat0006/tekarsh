@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['var(--font-poppins)', 'sans-serif'],
+        baiJamjuree: ['var(--font-bai-jamjuree)', 'sans-serif'],
       },
     },
   },
